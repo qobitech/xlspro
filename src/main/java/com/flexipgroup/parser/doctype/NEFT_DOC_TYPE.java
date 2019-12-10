@@ -25,7 +25,7 @@ public class NEFT_DOC_TYPE {
 				{
 					if(NEFT_XLS_Header.getNEFT_Header.get(a).equalsIgnoreCase(l.get(i).getNodeValue()))
 					{	
-						System.out.println(NEFT_XLS_Header.getNEFT_Header.get(a)+"\t"+l.get(i).getNodeValue());
+						//System.out.println(NEFT_XLS_Header.getNEFT_Header.get(a)+"\t"+l.get(i).getNodeValue());
 						track++;
 						i = l.size();
 					}
@@ -45,7 +45,7 @@ public class NEFT_DOC_TYPE {
 				{
 					if(NEFT_XLS_Header.getNEFT_Header.get(a).equalsIgnoreCase(l.get(i).getNode()))
 					{	
-						System.out.println(NEFT_XLS_Header.getNEFT_Header.get(a)+"\t"+l.get(i).getNode());
+						//System.out.println(NEFT_XLS_Header.getNEFT_Header.get(a)+"\t"+l.get(i).getNode());
 						track2++;
 						i = l.size();
 					}

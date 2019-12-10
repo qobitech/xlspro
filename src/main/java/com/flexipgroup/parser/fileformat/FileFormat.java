@@ -1,5 +1,7 @@
 package com.flexipgroup.parser.fileformat;
 
+import java.io.File;
+
 public class FileFormat {
 	/**
 	 * To verify file extension of client files
@@ -8,11 +10,19 @@ public class FileFormat {
 	 * @return
 	 */
 	
+	private static String extension;
+	
 	private FileFormat() {}
 	
-	public static boolean isFileType (String fileExtension) {
-		if(FileType.match(fileExtension)!=null)return true;
-		return false;
+	public static boolean isFileType (File filePath) {
+		if(!filePath.exists()) {
+			//LOG
+			System.out.println("file not exist");
+		}else {
+			extension = filePath.getAbsolutePath().substring(filePath.getAbsolutePath().lastIndexOf(".")+1);
+			if(FileType.match(extension)!=null)return true;
+		}
+			return false;
 	}
 	
 	private enum FileType {

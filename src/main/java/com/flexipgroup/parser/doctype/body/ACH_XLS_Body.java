@@ -15,9 +15,9 @@ public class ACH_XLS_Body {
 	 * to arrange node values in rows according to ACH xls document header 
 	 */
 	
-	public static List<String> getNAPS_Body = new ArrayList<String>();
+	//private static List<String> getNAPS_Body = new ArrayList<String>();
 	
-	public ACH_XLS_Body() {}
+	private ACH_XLS_Body() {}
 
 	public static ArrayList<ArrayList<String>> mACHBodyFormat (List<XMLReaderModel>l){
 		return ACHBodyFormat (l);

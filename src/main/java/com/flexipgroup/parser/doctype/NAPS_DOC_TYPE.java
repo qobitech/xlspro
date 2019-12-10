@@ -25,7 +25,7 @@ public class NAPS_DOC_TYPE {
 				{
 					if(NAPS_XLS_Header.getNAPS_Header.get(a).equalsIgnoreCase(l.get(i).getNodeValue()))
 					{	
-						System.out.println(NAPS_XLS_Header.getNAPS_Header.get(a)+"\t"+l.get(i).getNodeValue());
+						//System.out.println(NAPS_XLS_Header.getNAPS_Header.get(a)+"\t"+l.get(i).getNodeValue());
 						track++;
 						i = l.size();
 					}
@@ -45,7 +45,7 @@ public class NAPS_DOC_TYPE {
 				{
 					if(NAPS_XLS_Header.getNAPS_Header.get(a).equalsIgnoreCase(l.get(i).getNode()))
 					{	
-						System.out.println(NAPS_XLS_Header.getNAPS_Header.get(a)+"\t"+l.get(i).getNode());
+						//System.out.println(NAPS_XLS_Header.getNAPS_Header.get(a)+"\t"+l.get(i).getNode());
 						track2++;
 						i = l.size();
 					}

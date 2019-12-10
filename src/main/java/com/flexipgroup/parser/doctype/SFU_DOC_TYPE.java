@@ -26,7 +26,7 @@ public class SFU_DOC_TYPE {
 				{
 					if(SFU_XLS_Header.getSFU_Header.get(a).equalsIgnoreCase(l.get(i).getNodeValue()))
 					{	
-						System.out.println(SFU_XLS_Header.getSFU_Header.get(a)+"\t"+l.get(i).getNodeValue());
+						//System.out.println(SFU_XLS_Header.getSFU_Header.get(a)+"\t"+l.get(i).getNodeValue());
 						track++;
 						i = l.size();
 					}
@@ -46,7 +46,7 @@ public class SFU_DOC_TYPE {
 				{
 					if(SFU_XLS_Header.getSFU_Header.get(a).equalsIgnoreCase(l.get(i).getNode()))
 					{	
-						System.out.println(SFU_XLS_Header.getSFU_Header.get(a)+"\t"+l.get(i).getNode());
+						//System.out.println(SFU_XLS_Header.getSFU_Header.get(a)+"\t"+l.get(i).getNode());
 						track2++;
 						i = l.size();
 					}

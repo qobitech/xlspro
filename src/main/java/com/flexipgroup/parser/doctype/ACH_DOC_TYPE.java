@@ -26,7 +26,7 @@ public class ACH_DOC_TYPE {
 				{
 					if(ACH_XLS_Header.getACH_Header.get(a).equalsIgnoreCase(l.get(i).getNodeValue()))
 					{	
-						System.out.println(ACH_XLS_Header.getACH_Header.get(a)+"\t"+l.get(i).getNodeValue());
+						//System.out.println(ACH_XLS_Header.getACH_Header.get(a)+"\t"+l.get(i).getNodeValue());
 						track++;
 						i = l.size();
 					}
@@ -46,7 +46,7 @@ public class ACH_DOC_TYPE {
 				{
 					if(ACH_XLS_Header.getACH_Header.get(a).equalsIgnoreCase(l.get(i).getNode()))
 					{	
-						System.out.println(ACH_XLS_Header.getACH_Header.get(a)+"\t"+l.get(i).getNode());
+						//System.out.println(ACH_XLS_Header.getACH_Header.get(a)+"\t"+l.get(i).getNode());
 						track2++;
 						i = l.size();
 					}

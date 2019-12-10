@@ -1,5 +1,8 @@
 package com.flexipgroup.parser.doctype.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -30,7 +33,5 @@ public class ACH_Model {
 		this.RIB_CODE = RIB_CODE;
 		this.NARRATION = NARRATION;
 	}
-	
-	private ACH_Model() {}
 	
 }

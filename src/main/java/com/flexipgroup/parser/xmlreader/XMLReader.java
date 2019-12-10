@@ -31,7 +31,7 @@ public class XMLReader {
 			File file = new File(filePath);  
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();  
 			DocumentBuilder db = dbf.newDocumentBuilder();  
-			
+			db.setErrorHandler(new MyErrorHandler());
 			Document doc = db.parse(file); 			
 			doc.getDocumentElement().normalize();  
 			//System.out.println("Root element: " + doc.getDocumentElement().getNodeName());  

@@ -29,12 +29,12 @@ public class Excel {
 
 	private Excel() {}
 	
-	private Workbook runXLSHeader(String pageName,int setWidthLoop ,int numberNWidth,int cellwidth,int headerRowIndex,String fontName,
+	private Workbook runXLSHeader(String pageName,int numberNWidth,int cellwidth,int headerRowIndex,String fontName,
 			int headerRowPosition,List <String> headercellValue,int numHeaderColumns,int bodyrowiterate,int bodycelliterate,
 			List <String> bodycellValue)
 	{
 		HSSFWorkbook workbook = new HSSFWorkbook();
-		HSSFSheet sheet = setXLSSheet (workbook,pageName,setWidthLoop,numberNWidth,cellwidth); 				
+		HSSFSheet sheet = setXLSSheet (workbook,pageName,numberNWidth,cellwidth); 				
 		this.rowheader = sheet.createRow(headerRowIndex); 
 		this.headerStyle = workbook.createCellStyle();
 		this.headerStyle.setFillForegroundColor(IndexedColors.LIGHT_BLUE.getIndex());
@@ -43,11 +43,13 @@ public class Excel {
 		this.headerStyle.setFont(xlsfont);
 		//HEADER
 		this.headerCell = this.rowheader.createCell(headerRowPosition);
+		
 		createHeader(numHeaderColumns, this.headerStyle,this.rowheader,this.headerCell,headercellValue);
+		
 		//Write content of table
 		this.style = workbook.createCellStyle();
 		this.style.setWrapText(true);	
-		createRow(bodyrowiterate, bodycelliterate, sheet, style, row, cell,bodycellValue);		
+		createBodyRow(bodyrowiterate, bodycelliterate, sheet, style, row, cell,bodycellValue);		
 		return workbook;
 	}
 	
@@ -55,7 +57,7 @@ public class Excel {
 			int bodyrowiterate,List<String>bodycellValue,String saveDirectory) throws IOException {
 		
 		//HEADER		
-		workbook = runXLSHeader(pageName,0,N,cellwidth,0,fontName,0,cellValue,N,bodyrowiterate,N,bodycellValue);
+		workbook = runXLSHeader(pageName,N,cellwidth,0,fontName,0,cellValue,N,bodyrowiterate,N,bodycellValue);
 		
 		//write content to file
 		File currDir = new File(saveDirectory);
@@ -72,17 +74,35 @@ public class Excel {
 		prepareXLSExcelFile (fileName,pageName,N,cellwidth,fontName,cellValue,bodyrowiterate,bodycellValue,saveDirectory);
 	}
 	
-	private HSSFSheet setXLSSheet (HSSFWorkbook workbook,String pageName,int loop,int n,int width)
-	{
+	/**
+	 * create xls sheet : specify page name (pageName), 
+	 * set number of columns in a row (n), 
+	 * set column width (width)
+	 * 
+	 * @param workbook
+	 * @param pageName
+	 * @param n
+	 * @param width
+	 * @return
+	 */
+	private HSSFSheet setXLSSheet (HSSFWorkbook workbook,String pageName,int n,int width)
+	{	
 		HSSFSheet sheet = workbook.createSheet(pageName);
+		int loop = 0;
 		while(loop < n)
 		{
 			sheet.setColumnWidth(loop, width);
 			loop++;
 		}
 		return sheet;
-	}	
-	
+	}
+	/**
+	 * set font: font name (fontName) 
+	 *  
+	 * @param workbook
+	 * @param fontName
+	 * @return
+	 */
 	private HSSFFont setXLSFont (Workbook workbook, String fontName)
 	{
 		HSSFFont font = ((HSSFWorkbook) workbook).createFont();
@@ -92,29 +112,54 @@ public class Excel {
 		return font;
 	}
 	
-	private void createHeader(int iterate,CellStyle headerStyle,Row header,Cell headerCell,List <String> cellValue)
+	/**
+	 * set number of columns (cell) in header row,
+	 * add header value from header list
+	 * 
+	 * @param iterate
+	 * @param headerStyle
+	 * @param header
+	 * @param headerCell
+	 * @param cellValue
+	 */
+	private void createHeader(int iterate,CellStyle headerStyle,Row rowHeader,Cell headerCell,List <String> headerList)
 	{
 		for(int i=0; i < iterate; i++)
 		{
-			headerCell = header.createCell(i);
-			headerCell.setCellValue(cellValue.get(i));				
+			headerCell = rowHeader.createCell(i);
+			headerCell.setCellValue(headerList.get(i));				
 //			headerCell.setCellStyle(headerStyle);
-		}
-		
+		}	
 	}
 	
-	private Row createRow(int rowiterate,int celliterate,Sheet sheet,CellStyle style,Row row,Cell cell,List<String>cellValue)
+	/**
+	 * 
+	 * 
+	 * @param rowiterate
+	 * @param columnNumber
+	 * @param sheet
+	 * @param style
+	 * @param row
+	 * @param cell
+	 * @param cellValue
+	 * @return
+	 */
+	
+	
+	private Row createBodyRow(int rowiterate,int columnNumber,Sheet sheet,CellStyle style,Row row,Cell cell,List<String>cellValue)
 	{
 		for(int i=1;i<rowiterate+1;i++) 
 		{
 			row = sheet.createRow(i);
 			
-			for(int j=0;j<celliterate+1;j++) 
+			for(int j=0;j<columnNumber;j++) 
 			{		 
 				cell = row.createCell(j);
-				cell.setCellValue(cellValue.get(j));
+				cell.setCellValue(cellValue.get(j+(columnNumber*(i-1))));
 				cell.setCellStyle(style);
-			}			
+//				System.out.println(j);
+//				System.out.println(j+columnNumber*(i-1));
+			}	
 		}
 		return row;
 	}

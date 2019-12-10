@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+
+    <key>Label</key>
+    <string>badman.plist</string>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>StartInterval</key>
+    <integer>20</integer>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/user/badmanserve/stderr.log</string>
+
+    <key>StandardOutPath</key>
+    <string>/Users/user/badmanserve/stderr.log</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+      <key>PATH</key>
+      <string><![CDATA[/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin]]></string>
+    </dict>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/user/badmanserve/demo</string>
+
+    <key>ProgramArguments</key>
+    <array>
+      <string>/usr/local/bin/node</string>
+      <baba>
+        <sample>
+          <aba>
+            <ccs></ccs>
+          </aba>
+        </sample>
+      </baba>
+      <string>BADASS.jar</string>
+    </array>
+
+  </dict>
+</plist>
